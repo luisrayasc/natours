@@ -70,6 +70,7 @@ app.use(
                 'maxcdn.bootstrapcdn.com',
                 'https://fonts.gstatic.com',
             ],
+            connectSrc: ["'self'", 'https://checkout.stripe.com'], //https://www.rockyourcode.com/heroku-react-express-content-security-policy-with-stripe-cloudinary-and-google-fonts/
         },
     })
 );
