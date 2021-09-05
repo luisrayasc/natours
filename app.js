@@ -1,4 +1,5 @@
 ///////////// NATOURS //////////////////////////////////////////////////////////////////
+// Lo usaré como template
 // app.js contiene la configuración de nuestra app para middleware y rutas
 
 // Iniciamos cargando las librerias necesarias
