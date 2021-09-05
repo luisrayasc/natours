@@ -9,7 +9,7 @@ export const login = async (email, password) => {
         // respuesta
         const res = await axios({
             method: 'POST',
-            url: 'http://127.0.0.1:3000/api/users/login',
+            url: '/api/users/login',
             data: { email, password },
         });
 
@@ -32,7 +32,7 @@ export const logout = async () => {
         // Mandamos la solicitud get con axios
         const res = await axios({
             method: 'Get',
-            url: 'http://127.0.0.1:3000/api/users/logout',
+            url: '/api/users/logout',
         });
         // refrescamos la página y mostramos alerta
         if (res.data.status === 'success') {

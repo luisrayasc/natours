@@ -12,6 +12,7 @@ const mongoSanitize = require('express-mongo-sanitize'); // Prevents NO SQL quer
 const xss = require('xss-clean'); // Protection agains XSS attacks
 const hpp = require('hpp'); // Prevent parameter pollution
 const cookieParser = require('cookie-parser'); // Cookie logger
+const compression = require('compression'); //compress response bodies for all request
 const cors = require('cors'); // Cross-Origin Resource Sharing
 
 // Error handler
@@ -123,6 +124,9 @@ app.use((req, res, next) => {
     // console.log(req.cookies);
     next();
 });
+
+// Compression middleware
+app.use(compression()); // Improve performance of our app by compresing text requests
 
 // Route handlers
 app.use('/', viewRouter);

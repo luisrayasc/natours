@@ -9,7 +9,7 @@ export const updateAccData = async (data, type) => {
         const urlPath = type === 'password' ? 'updatePassword' : 'updateMe';
         const res = await axios({
             method: 'PATCH',
-            url: `http://127.0.0.1:3000/api/users/${urlPath}`,
+            url: `/api/users/${urlPath}`,
             data: data,
         });
 
