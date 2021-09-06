@@ -60,6 +60,7 @@ app.use(
             ],
             'frame-src': ['https://js.stripe.com/'],
             'connect-src': [
+                "'self'",
                 'https://api.mapbox.com/',
                 'https://events.mapbox.com',
             ],
