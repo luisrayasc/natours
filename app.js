@@ -52,16 +52,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(
     helmet.contentSecurityPolicy({
         directives: {
-            defaultSrc: ["'self'", 'https://js.stripe.com/'],
+            defaultSrc: [
+                "'self'",
+                'https://*.herokuapp.com/',
+                'https://js.stripe.com/',
+            ],
             scriptSrc: [
                 "'self'",
                 'code.jquery.com',
+                'https://*.herokuapp.com/',
                 'maxcdn.bootstrapcdn.com',
                 'https://js.stripe.com/v3/',
                 'https://api.mapbox.com/',
             ],
             styleSrc: [
                 "'self'",
+                'https://*.herokuapp.com/',
                 'maxcdn.bootstrapcdn.com',
                 'https://fonts.googleapis.com',
                 'https://api.mapbox.com/',
