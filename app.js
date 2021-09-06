@@ -56,6 +56,7 @@ app.use(
                 "'self'",
                 'https://js.stripe.com/v3/',
                 'https://api.mapbox.com/',
+                'blob:',
             ],
             'frame-src': ['https://js.stripe.com/'],
         },
