@@ -58,11 +58,13 @@ app.use(
                 'code.jquery.com',
                 'maxcdn.bootstrapcdn.com',
                 'https://js.stripe.com/v3/',
+                'https://api.mapbox.com/',
             ],
             styleSrc: [
                 "'self'",
                 'maxcdn.bootstrapcdn.com',
                 'https://fonts.googleapis.com',
+                'https://api.mapbox.com/',
                 "'unsafe-inline'",
             ],
             fontSrc: [
