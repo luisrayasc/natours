@@ -48,47 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 ///////////////////////////
 // Global Middleware -> todas las funciones que corren entre el req<=>res
 // Set secure HTTP headers
-// app.use(helmet());
-// app.use(
-//     helmet.contentSecurityPolicy({
-//         directives: {
-//             defaultSrc: [
-//                 "'self'",
-//                 'https://*.herokuapp.com/',
-//                 'https://js.stripe.com/',
-//             ],
-//             scriptSrc: [
-//                 "'self'",
-//                 'code.jquery.com',
-//                 'https://*.herokuapp.com/',
-//                 'maxcdn.bootstrapcdn.com',
-//                 'https://js.stripe.com/v3/',
-//                 'https://api.mapbox.com/',
-//             ],
-//             styleSrc: [
-//                 "'self'",
-//                 'https://*.herokuapp.com/',
-//                 'maxcdn.bootstrapcdn.com',
-//                 'https://fonts.googleapis.com',
-//                 'https://api.mapbox.com/',
-//                 "'unsafe-inline'",
-//             ],
-//             fontSrc: [
-//                 "'self'",
-//                 'maxcdn.bootstrapcdn.com',
-//                 'https://fonts.gstatic.com',
-//             ],
-//             connectSrc: [
-//                 "'self'",
-//                 'https://checkout.stripe.com',
-//                 'https://*.tiles.mapbox.com',
-//                 'https://api.mapbox.com',
-//                 'https://events.mapbox.com',
-//                 'https://cdnjs.cloudflare.com',
-//             ], //https://www.rockyourcode.com/heroku-react-express-content-security-policy-with-stripe-cloudinary-and-google-fonts/
-//         },
-//     })
-// );
+app.use(helmet());
 
 // Usar morgan logger cuando estamos en dev
 if (process.env.NODE_ENV === 'development') {
