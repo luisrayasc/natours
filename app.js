@@ -59,7 +59,10 @@ app.use(
                 'blob:',
             ],
             'frame-src': ['https://js.stripe.com/'],
-            'connect-src': ['https://api.mapbox.com/'],
+            'connect-src': [
+                'https://api.mapbox.com/',
+                'https://events.mapbox.com',
+            ],
         },
     })
 );
