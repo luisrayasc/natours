@@ -34,10 +34,10 @@ exports.getTour = catchAsync(async (req, res, next) => {
 
 exports.getLoginForm = catchAsync(async (req, res, next) => {
     res.status(200)
-        .set(
-            'Content-Security-Policy',
-            'connect-src https://cdnjs.cloudflare.com http://127.0.0.1:3000 ws://127.0.0.1:60525'
-        )
+        // .set(
+        //     'Content-Security-Policy',
+        //     'connect-src https://cdnjs.cloudflare.com http://127.0.0.1:3000 ws://127.0.0.1:60525'
+        // )
         .render('login', {
             title: 'Login to natours',
         });
