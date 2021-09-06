@@ -25,7 +25,6 @@ if (loginForm) {
 }
 
 if (mapBox) {
-    console.log('he have a map');
     const locations = JSON.parse(mapBox.dataset.locations);
     displayMap(locations);
 }

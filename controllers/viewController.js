@@ -22,10 +22,10 @@ exports.getTour = catchAsync(async (req, res, next) => {
     if (!tour) return next(new AppError('No tour found', 404));
 
     res.status(200)
-        .set(
-            'Content-Security-Policy',
-            'connect-src https://*.tiles.mapbox.com https://api.mapbox.com https://events.mapbox.com http://127.0.0.1:3000'
-        )
+        // .set(
+        //     'Content-Security-Policy',
+        //     'connect-src https://*.tiles.mapbox.com https://api.mapbox.com https://events.mapbox.com http://127.0.0.1:3000'
+        // )
         .render('tour', {
             title: tour.name,
             tour: tour,
