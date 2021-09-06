@@ -53,10 +53,11 @@ app.use(
         useDefaults: true,
         directives: {
             'script-src': [
-                "'self",
+                "'self'",
                 'https://js.stripe.com/v3/',
                 'https://api.mapbox.com/',
             ],
+            'frame-src': ['https://js.stripe.com/'],
         },
     })
 );
