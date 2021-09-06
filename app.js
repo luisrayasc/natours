@@ -48,7 +48,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 ///////////////////////////
 // Global Middleware -> todas las funciones que corren entre el req<=>res
 // Set secure HTTP headers
-app.use(helmet());
+app.use(
+    helmet.contentSecurityPolicy({
+        useDefaults: true,
+        directives: {
+            'script-src': [
+                "'self",
+                'https://js.stripe.com/v3/',
+                'https://api.mapbox.com/',
+            ],
+        },
+    })
+);
 
 // Usar morgan logger cuando estamos en dev
 if (process.env.NODE_ENV === 'development') {
