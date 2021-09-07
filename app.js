@@ -37,12 +37,6 @@ app.enable('trust proxy');
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views')); // indicar donde estan los views (pug templates)
 
-// Implement CORS
-app.use(cors());
-
-// Use CORS on complex requests like delete and patch
-app.options('*', cors());
-
 // Specific route (for complex requests like delete, patch)
 // app.options('api/tours/:id', cors());
 
@@ -71,6 +65,12 @@ app.use(
         },
     })
 );
+
+// Implement CORS
+app.use(cors());
+
+// Use CORS on complex requests like delete and patch, so our API is available to everyone
+app.options('*', cors());
 
 // Usar morgan logger cuando estamos en dev
 if (process.env.NODE_ENV === 'development') {
