@@ -66,14 +66,11 @@ app.use(
     })
 );
 
-// Set Cross Origin Resource
-app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
+// Implement CORS
+app.use(cors());
 
-// // Implement CORS
-// app.use(cors());
-
-// // Use CORS on complex requests like delete and patch, so our API is available to everyone
-// app.options('*', cors());
+// Use CORS on complex requests like delete and patch, so our API is available to everyone
+app.options('*', cors());
 
 // Usar morgan logger cuando estamos en dev
 if (process.env.NODE_ENV === 'development') {
