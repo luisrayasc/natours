@@ -29,6 +29,10 @@ const bookingRouter = require('./routes/bookingRoutes');
 // creamos nuestro objeto app
 const app = express();
 
+// Trust proxies (cuando está en deployment heroku hace proxy para cada request)
+// https://expressjs.com/en/guide/behind-proxies.html
+app.enable('trust proxy');
+
 // Indicar el templating engine que usaremos
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views')); // indicar donde estan los views (pug templates)

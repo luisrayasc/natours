@@ -14,19 +14,18 @@ const signToken = function (id) {
     });
 };
 
-const createSendToken = (user, statusCode, res) => {
+const createSendToken = (user, statusCode, req, res) => {
     // Se crea un JSON Web Token para hacer el login del usuario
     const token = signToken(user._id);
-    const cookieOptions = {
+
+    // Creamos la cookie
+    res.cookie('jwt', token, {
         expires: new Date(
             Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
         ),
-        httpOnly: true, // so we can´t manipulate cookie from the browser
-    };
-    if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
-
-    // Envio del JWT en una HttpOnlyCookie
-    res.cookie('jwt', token, cookieOptions);
+        httpOnly: true, // Envio del JWT en una HttpOnlyCookie
+        secure: req.secure || req.headers['x-forwarded-proto'] === 'https', // cookies seguras si estamos sobre https
+    });
 
     // Remove password from the output
     user.password = undefined;
@@ -57,7 +56,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     // Envio de welcome email
     await new Email(newUser, url).sendWelcome();
     // Confirmación y loggeo
-    createSendToken(newUser, 201, res);
+    createSendToken(newUser, 201, req, res);
 });
 
 // Log-in for existing users
@@ -78,7 +77,7 @@ exports.login = catchAsync(async (req, res, next) => {
         return next(new AppError('incorrect email or password', 401));
 
     // If everything ok, send token to client
-    createSendToken(user, 200, res);
+    createSendToken(user, 200, req, res);
 });
 
 // Logout -> we send a new cookie without the JWT and a short expiration time
@@ -254,7 +253,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     await user.save();
 
     // Log the user in (send JWT to client)
-    createSendToken(user, 200, res);
+    createSendToken(user, 200, req, res);
 });
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
@@ -273,5 +272,5 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     await user.save();
 
     // Log the user in, send JWT
-    createSendToken(user, 200, res);
+    createSendToken(user, 200, req, res);
 });
