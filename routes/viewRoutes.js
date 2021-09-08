@@ -9,13 +9,13 @@ const {
     getMyTours,
 } = require('../controllers/viewController');
 // Booking controllers
-const { createBookingCheckout } = require('../controllers/bookingController');
+// const { createBookingCheckout } = require('../controllers/bookingController');
 // Auth controllers
 const { isLoggedIn, protect } = require('../controllers/authController');
 
 const router = express.Router();
 // Home overviewBox
-router.get('/', createBookingCheckout, isLoggedIn, getOverview);
+router.get('/', /*createBookingCheckout*/ isLoggedIn, getOverview);
 // Tour details
 router.get('/tour/:slug', isLoggedIn, getTour);
 // Login

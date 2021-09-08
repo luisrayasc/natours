@@ -26,6 +26,9 @@ const reviewRouter = require('./routes/reviewRoutes'); // Rutas para 'reviews'
 const viewRouter = require('./routes/viewRoutes'); // // Rutas para 'views'
 const bookingRouter = require('./routes/bookingRoutes');
 
+// Controllers
+const { webhookCheckout } = require('./controllers/bookingController');
+
 // creamos nuestro objeto app
 const app = express();
 
@@ -84,6 +87,13 @@ const limiter = rateLimit({
     message: 'Too many requests from this IP, please try again in an hour',
 });
 app.use('/api/', limiter);
+
+// Stripe webhoooks route
+app.post(
+    '/webhook-checkout',
+    express.raw({ type: 'application/json' }),
+    webhookCheckout
+);
 
 // Body parser, reading data from the body into req.body
 app.use(
