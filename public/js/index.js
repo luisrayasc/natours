@@ -4,9 +4,10 @@ import { login, logout } from './login';
 import { displayMap } from './mapbox';
 import { updateAccData } from './updateAccData';
 import { bookTour } from './stripe';
+import { showAlert } from './alerts';
 
 // DOM Elements
-const loginForm = document.querySelector('.login-form'); // ormulario de login
+const loginForm = document.querySelector('.login-form'); // formulario de login
 const mapBox = document.getElementById('map');
 const logoutBtn = document.querySelector('.nav__el--logout'); // boton de logout
 const userDataForm = document.querySelector('.form-user-data'); // datos de usario en '/me'
@@ -78,3 +79,6 @@ if (bookBtn) {
         bookTour(tourId);
     });
 }
+
+const alertMessage = document.querySelector('body').dataset.alert;
+if (alert) showAlert('success', alertMessage, 15);

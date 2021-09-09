@@ -28,7 +28,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
         // prettier-ignore
         // success_url:
         //     `${req.protocol}://${req.get('host')}/?tour=${tour._id}&user=${req.user._id}&price=${tour.price}`,
-        success_url: `${req.protocol}://${req.get('host')}/mytours`,
+        success_url: `${req.protocol}://${req.get('host')}/mytours?alert=booking`, // mandamos un query param de altert tipo booking
         cancel_url: `${req.protocol}://${req.get('host')}/tour/${tour.slug}`,
         customer_email: req.user.email,
         client_reference_id: req.params.tourId,

@@ -7,6 +7,7 @@ const {
     getLoginForm,
     getMe,
     getMyTours,
+    alerts,
 } = require('../controllers/viewController');
 // Booking controllers
 // const { createBookingCheckout } = require('../controllers/bookingController');
@@ -14,6 +15,10 @@ const {
 const { isLoggedIn, protect } = require('../controllers/authController');
 
 const router = express.Router();
+
+// Alerts middleware
+router.use(alerts);
+
 // Home overviewBox
 router.get('/', /*createBookingCheckout*/ isLoggedIn, getOverview);
 // Tour details

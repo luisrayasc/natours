@@ -2,7 +2,7 @@
 // esta función envia un request a nuetra api para login
 /* eslint-disable */
 import axios from 'axios'; // async http client
-import { showAlert } from './alerts';
+import { showAlert } from './alerts'; // función para mostrar mensaje de alertas
 
 export const login = async (email, password) => {
     try {
